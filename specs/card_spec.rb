@@ -27,11 +27,29 @@ describe Card do
     it "to_s returns a readable String value logically for values 2-10" do
       # Test to ensure that to_s works for cards values 2-10
       # for example:  "2 of diamonds"
+      card = Card.new(2, :diamonds)
+      card.to_s.must_be_kind_of String
+      card.to_s.must_equal "2 of diamonds"
     end
 
     it "to_s returns a readable String value for Ace, Jack, Queen, King" do
       # Test to ensure that to_s works for cards values 1, and 11-13
       # For example: "Queen of hearts"
+      card = Card.new(1, :clubs)
+      card.to_s.must_be_kind_of String
+      card.to_s.must_equal "Ace of clubs"
+
+      card = Card.new(11, :hearts)
+      card.to_s.must_be_kind_of String
+      card.to_s.must_equal "Jack of hearts"
+
+      card = Card.new(12, :diamonds)
+      card.to_s.must_be_kind_of String
+      card.to_s.must_equal "Queen of diamonds"
+
+      card = Card.new(13, :spades)
+      card.to_s.must_be_kind_of String
+      card.to_s.must_equal "King of spades"
     end
   end
 
@@ -39,11 +57,20 @@ describe Card do
 
     it "Can retrieve the value of the card using a `.value`." do
       # ensure that `.value works as expected`
+      card = Card.new(4, :diamonds)
+      card.value.must_be_kind_of Integer
+      card.value.must_equal 4
+
+      card = Card.new(13, :hearts)
+      card.value.must_be_kind_of Integer
+      card.value.must_equal 13
     end
 
     it "Can retrieve the value of the card using a `.suit`." do
       # ensure that `.suit works as expected returning the symbol of the suit`
-
+      card = Card.new(6, :clubs)
+      card.suit.must_be_kind_of Symbol
+      card.suit.must_equal :clubs
     end
   end
 
